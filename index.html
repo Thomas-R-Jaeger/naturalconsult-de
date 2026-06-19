@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Jäger – naturalconsult</title>
+    <meta name="description" content="Thomas Jäger – Agile Coach, Facilitator und Organisationsentwickler. Ich begleite Teams und Führungskräfte in echten Veränderungsprozessen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-dark: #1a1a1a;
+            --color-text: #2d2d2d;
+            --color-muted: #6b7280;
+            --color-accent: #4a7fa5;
+            --color-bg: #ffffff;
+            --color-bg-soft: #f7f8f9;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 300;
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        nav a {
+            color: var(--color-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--color-dark);
+        }
+
+        /* Hero */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 80px);
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 5rem 4rem 4rem;
+            background: var(--color-bg);
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-name {
+            font-size: clamp(2.2rem, 3.5vw, 3rem);
+            font-weight: 300;
+            color: var(--color-dark);
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-roles {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--color-muted);
+            letter-spacing: 0.02em;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-text {
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: var(--color-text);
+            line-height: 1.8;
+            max-width: 42ch;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--color-dark);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.9rem 1.8rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, transform 0.2s;
+            align-self: flex-start;
+        }
+
+        .cta-button:hover {
+            background: var(--color-accent);
+            transform: translateY(-1px);
+        }
+
+        .cta-button svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 1.5rem 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #e5e7eb;
+            background: var(--color-bg-soft);
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            font-weight: 400;
+        }
+
+        footer a {
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--color-dark);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.5rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-image {
+                height: 60vw;
+                min-height: 280px;
+            }
+
+            .hero-content {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .hero-name {
+                font-size: 2rem;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="naturalconsult">
+        </div>
+        <nav>
+            <a href="https://cal.eu/thomas-jaeger">Gespräch vereinbaren</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="assets/thomas.jpg" alt="Thomas Jäger">
+            </div>
+            <div class="hero-content">
+                <p class="hero-eyebrow">naturalconsult</p>
+                <h1 class="hero-name">Thomas Jäger</h1>
+                <p class="hero-roles">Agile Coach &nbsp;·&nbsp; Facilitator &nbsp;·&nbsp; Organisationsentwickler</p>
+                <p class="hero-text">
+                    Ich begleite Teams und Führungskräfte dabei, besser zusammenzuarbeiten –
+                    in echten Veränderungsprozessen, nicht im Projektplan. Als Agile Coach und
+                    Facilitator bringe ich Struktur in komplexe Situationen, ohne das Wesentliche
+                    zu vereinfachen.
+                </p>
+                <a href="https://cal.eu/thomas-jaeger" class="cta-button">
+                    Gespräch vereinbaren
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Thomas Jäger · naturalconsult</p>
+        <a href="mailto:thomas.jaeger@naturalconsult.de">thomas.jaeger@naturalconsult.de</a>
+    </footer>
+
+</body>
+</html>
