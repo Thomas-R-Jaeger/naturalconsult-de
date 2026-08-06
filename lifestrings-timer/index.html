@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeStrings Timer – Fokus-Timer für den Mac</title>
+    <meta name="description" content="Ein Fokus-Timer für macOS, der sichtbar bleibt. Pomodoro-Rhythmus, Ziffern oder ablaufende Scheibe, ein Mini-Fenster über allen anderen. Kostenlos, ohne Konto.">
+    <meta name="color-scheme" content="light dark">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #faf8f5;
+            --text: #1c1a17;
+            --muted: #8a7f72;
+            --rahmen: rgba(0, 0, 0, 0.07);
+            --akzent: #d97706;
+            --akzent-hover: #b45309;
+            --auf-akzent: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1e1c19;
+                --text: #ede9e3;
+                --muted: #7a7168;
+                --rahmen: rgba(255, 255, 255, 0.07);
+                --akzent: #f59e0b;
+                --akzent-hover: #d97706;
+                --auf-akzent: #1e1c19;
+            }
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .seite {
+            max-width: 44rem;
+            margin: 0 auto;
+            padding: 5rem 1.5rem 4rem;
+        }
+
+        /* Kopf */
+        .kopf {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .kopf img {
+            width: 72px;
+            height: 72px;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+        }
+
+        .einzeiler {
+            color: var(--muted);
+            font-size: 1.0625rem;
+            line-height: 1.5;
+        }
+
+        /* Beschreibung */
+        .beschreibung {
+            margin-top: 3rem;
+            font-size: 1.125rem;
+            max-width: 36rem;
+        }
+
+        /* Screenshot */
+        .schau {
+            margin-top: 3.5rem;
+        }
+
+        .schau img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 12px;
+        }
+
+        /* Download */
+        .download {
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .knopf {
+            display: inline-block;
+            background: var(--akzent);
+            color: var(--auf-akzent);
+            font-size: 1.0625rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            transition: background 150ms;
+        }
+
+        .knopf:hover,
+        .knopf:focus-visible {
+            background: var(--akzent-hover);
+        }
+
+        .fakten {
+            margin-top: 1rem;
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        /* Anleitung */
+        .anleitung {
+            margin-top: 4.5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--rahmen);
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .anleitung p {
+            margin-top: 1rem;
+            max-width: 36rem;
+        }
+
+        h3 {
+            margin-top: 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .anleitung ol {
+            margin-top: 0.5rem;
+            padding-left: 1.25rem;
+            max-width: 36rem;
+        }
+
+        .anleitung li {
+            margin-top: 0.25rem;
+        }
+
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.875em;
+        }
+
+        pre {
+            margin-top: 0.75rem;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--rahmen);
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+
+        pre code {
+            white-space: pre;
+        }
+
+        .nachsatz {
+            margin-top: 2rem;
+            color: var(--muted);
+            font-size: 0.9375rem;
+        }
+
+        /* Fußzeile */
+        footer {
+            margin-top: 5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--rahmen);
+            color: var(--muted);
+            font-size: 0.9375rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        footer a {
+            text-decoration-color: var(--rahmen);
+            text-underline-offset: 0.2em;
+        }
+
+        footer a:hover {
+            color: var(--text);
+        }
+
+        @media (max-width: 30rem) {
+            .seite {
+                padding-top: 3rem;
+            }
+
+            .kopf {
+                gap: 1rem;
+            }
+
+            .kopf img {
+                width: 56px;
+                height: 56px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .beschreibung {
+                font-size: 1.0625rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="seite">
+
+    <header class="kopf">
+        <img src="icon.svg" alt="" width="72" height="72">
+        <div>
+            <h1>LifeStrings Timer</h1>
+            <p class="einzeiler">Ein Fokus-Timer, der sichtbar bleibt.</p>
+        </div>
+    </header>
+
+    <p class="beschreibung">
+        Der LifeStrings Timer arbeitet im Pomodoro-Rhythmus: Fokus, kurze Pause,
+        lange Pause. Die verbleibende Zeit zeigt er wahlweise als Ziffern oder als
+        ablaufende Scheibe. Ein Mini-Fenster schwebt über allen anderen Fenstern,
+        damit die Zeit im Blick bleibt. Keine Konten, keine Cloud, keine Statistik
+        – ein Timer, sonst nichts.
+    </p>
+
+    <div class="schau">
+        <img src="screenshot-dunkel.png" width="820" height="710"
+             alt="Der LifeStrings Timer in der Scheibenansicht: eine ablaufende Scheibe zeigt die verbleibende Fokuszeit.">
+    </div>
+
+    <div class="download">
+        <a class="knopf" href="downloads/LifeStrings-Timer-1.0.zip">Für macOS laden</a>
+        <p class="fakten">Version 1.0 · 0,6 MB · ab macOS 14 · kostenlos</p>
+    </div>
+
+    <section class="anleitung">
+        <h2>So öffnest du die App</h2>
+        <p>
+            Der LifeStrings Timer ist noch nicht bei Apple notarisiert. Beim ersten
+            Start meldet sich macOS deshalb mit einem Warnhinweis. Welcher der
+            beiden folgenden erscheint, hängt vom System ab.
+        </p>
+
+        <h3>„… kann nicht geöffnet werden, weil Apple sie nicht auf Schadsoftware prüfen konnte“</h3>
+        <ol>
+            <li>Den Hinweis mit „Fertig“ schließen.</li>
+            <li>Systemeinstellungen → Datenschutz &amp; Sicherheit öffnen.</li>
+            <li>Dort ganz nach unten scrollen und auf „Dennoch öffnen“ klicken.</li>
+        </ol>
+
+        <h3>„… ist beschädigt und sollte in den Papierkorb gelegt werden“</h3>
+        <p>
+            Die App ist nicht beschädigt. Der Download hat sie mit einem
+            Quarantäne-Merkmal versehen, das die Signatur ungültig macht. Der
+            folgende Befehl im Terminal entfernt es:
+        </p>
+        <pre><code>xattr -cr "/Applications/LifeStrings Timer.app"</code></pre>
+        <p>Danach lässt sich die App normal öffnen.</p>
+
+        <p class="nachsatz">
+            Beides entfällt, sobald der Developer-Account eingerichtet ist – dann
+            kommt eine notarisierte Fassung, die sich ohne Umweg öffnen lässt.
+        </p>
+    </section>
+
+    <footer>
+        <a href="/">naturalconsult.de</a>
+        <a href="mailto:thomas.jaeger@naturalconsult.de">thomas.jaeger@naturalconsult.de</a>
+    </footer>
+
+</div>
+
+</body>
+</html>
