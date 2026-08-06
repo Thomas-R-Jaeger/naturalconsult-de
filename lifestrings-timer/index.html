@@ -106,10 +106,10 @@
 
         .schau img {
             display: block;
+            width: 421px;
             max-width: 100%;
             height: auto;
             margin: 0 auto;
-            border-radius: 12px;
         }
 
         /* Download */
@@ -268,8 +268,11 @@
     </p>
 
     <div class="schau">
-        <img src="screenshot-dunkel.png" width="820" height="710"
-             alt="Der LifeStrings Timer in der Scheibenansicht: eine ablaufende Scheibe zeigt die verbleibende Fokuszeit.">
+        <picture>
+            <source srcset="screenshot-hell.png" media="(prefers-color-scheme: light)">
+            <img src="screenshot-dunkel.png" width="842" height="724"
+                 alt="Der LifeStrings Timer in der Scheibenansicht: eine ablaufende Scheibe zeigt die verbleibende Fokuszeit der laufenden Fokusphase.">
+        </picture>
     </div>
 
     <div class="download">
