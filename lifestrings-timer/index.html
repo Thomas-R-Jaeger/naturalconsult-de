@@ -158,63 +158,6 @@
             font-size: 0.9375rem;
         }
 
-        /* Anleitung */
-        .anleitung {
-            margin-top: 4.5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--rahmen);
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-        }
-
-        .anleitung p {
-            margin-top: 1rem;
-            max-width: 36rem;
-        }
-
-        h3 {
-            margin-top: 2rem;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .anleitung ol {
-            margin-top: 0.5rem;
-            padding-left: 1.25rem;
-            max-width: 36rem;
-        }
-
-        .anleitung li {
-            margin-top: 0.25rem;
-        }
-
-        code {
-            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-            font-size: 0.875em;
-        }
-
-        pre {
-            margin-top: 0.75rem;
-            padding: 0.875rem 1rem;
-            border: 1px solid var(--rahmen);
-            border-radius: 8px;
-            overflow-x: auto;
-        }
-
-        pre code {
-            white-space: pre;
-        }
-
-        .nachsatz {
-            margin-top: 2rem;
-            color: var(--muted);
-            font-size: 0.9375rem;
-        }
-
         /* Fußzeile */
         footer {
             margin-top: 5rem;
@@ -296,36 +239,6 @@
         <a class="knopf" href="https://github.com/Thomas-R-Jaeger/LifeStrings-Timer-Release/releases/download/v2.0/LifeStrings-Timer-2.0.zip">Für macOS laden</a>
         <p class="fakten">Version 2.0 · 0,6 MB · ab macOS 14 · kostenlos · von Apple notarisiert</p>
     </div>
-
-    <section class="anleitung">
-        <h2>So öffnest du die App</h2>
-        <p>
-            Der LifeStrings Timer ist noch nicht bei Apple notarisiert. Beim ersten
-            Start meldet sich macOS deshalb mit einem Warnhinweis. Welcher der
-            beiden folgenden erscheint, hängt vom System ab.
-        </p>
-
-        <h3>„… kann nicht geöffnet werden, weil Apple sie nicht auf Schadsoftware prüfen konnte“</h3>
-        <ol>
-            <li>Den Hinweis mit „Fertig“ schließen.</li>
-            <li>Systemeinstellungen → Datenschutz &amp; Sicherheit öffnen.</li>
-            <li>Dort ganz nach unten scrollen und auf „Dennoch öffnen“ klicken.</li>
-        </ol>
-
-        <h3>„… ist beschädigt und sollte in den Papierkorb gelegt werden“</h3>
-        <p>
-            Die App ist nicht beschädigt. Der Download hat sie mit einem
-            Quarantäne-Merkmal versehen, das die Signatur ungültig macht. Der
-            folgende Befehl im Terminal entfernt es:
-        </p>
-        <pre><code>xattr -cr "/Applications/LifeStrings Timer.app"</code></pre>
-        <p>Danach lässt sich die App normal öffnen.</p>
-
-        <p class="nachsatz">
-            Beides entfällt, sobald der Developer-Account eingerichtet ist – dann
-            kommt eine notarisierte Fassung, die sich ohne Umweg öffnen lässt.
-        </p>
-    </section>
 
     <footer>
         <a href="/">naturalconsult.de</a>
