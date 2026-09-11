@@ -60,7 +60,10 @@ Von oben nach unten. Reihenfolge nach dem Muster vergleichbarer Indie-Mac-Apps
 bis zum Download.
 
 1. **Kopf.** App-Icon, Name, Einzeiler. Download-Knopf, darunter eine Zeile:
-   Version · Dateigröße · ab macOS 14 · kostenlos · von Apple notarisiert.
+   Version · Dateigröße · ab macOS 14 · kostenlos · von Apple notarisiert. Darunter der
+   Installationshinweis: „Nach dem Laden die App in den Ordner ‚Programme' ziehen. Beim
+   ersten Start kommt der Hinweis, dass es sich um eine aus dem Internet geladene Datei
+   handelt – einmal bestätigen." Nur hier, nicht am zweiten Knopf.
 2. **Bewegtbild.** Tonlose Schleife, 8–15 Sekunden: die ablaufende Scheibe und das
    Mini-Fenster, das über einem anderen Fenster schwebt. Zeigt, was ein Standbild nicht
    kann.
@@ -190,6 +193,7 @@ vom Umbau.
 7. Texte nach § 3 und § 4 schreiben.
 8. Update-Liste nach § 6 einbauen, Brevo-Automation prüfen.
 9. Metadaten nach § 9 setzen.
+10. Installationshinweis unter den Download-Knopf setzen, Wortlaut nach § 3 Punkt 1.
 
 ---
 
