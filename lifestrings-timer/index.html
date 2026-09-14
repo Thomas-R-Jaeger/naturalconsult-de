@@ -3,14 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LifeStrings Timer – Fokus-Timer für den Mac</title>
-    <meta name="description" content="Ein Fokus-Timer für macOS, der sichtbar bleibt. Pomodoro-Rhythmus, Ziffern oder ablaufende Scheibe, ein Mini-Fenster über allen anderen. Kostenlos, ohne Konto.">
+    <title>LifeStrings Timer – Fokus-Timer für macOS</title>
+    <meta name="description" content="Ein schlichter Fokus-Timer für den Mac, der über allen Fenstern bleibt. Kostenlos, ohne Konto – ein Pomodoro-Timer, der nur die Zeit zählt.">
     <meta name="color-scheme" content="light dark">
+    <link rel="canonical" href="https://naturalconsult.de/lifestrings-timer/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://naturalconsult.de/lifestrings-timer/">
+    <meta property="og:title" content="LifeStrings Timer – Fokus-Timer für macOS">
+    <meta property="og:description" content="Ein schlichter Fokus-Timer für den Mac, der über allen Fenstern bleibt. Kostenlos, ohne Konto – ein Pomodoro-Timer, der nur die Zeit zählt.">
+    <meta property="og:image" content="https://naturalconsult.de/lifestrings-timer/vorschau.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="de_DE">
+    <meta name="twitter:card" content="summary_large_image">
 
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "LifeStrings Timer",
+      "operatingSystem": "macOS 14.0",
+      "applicationCategory": "UtilitiesApplication",
+      "softwareVersion": "2.0",
+      "url": "https://naturalconsult.de/lifestrings-timer/",
+      "author": { "@type": "Person", "name": "Thomas Jäger" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+    }
+    </script>
 
     <style>
         /* Plus Jakarta Sans, lokal eingebunden (woff2, Latin-Subset) statt
@@ -109,30 +134,9 @@
             line-height: 1.5;
         }
 
-        /* Beschreibung */
-        .beschreibung {
-            margin-top: 3rem;
-            font-size: 1.125rem;
-            max-width: 36rem;
-        }
-
-        /* Screenshot */
-        .schau {
-            margin-top: 3.5rem;
-        }
-
-        .schau img {
-            display: block;
-            width: 421px;
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-        }
-
         /* Download */
         .download {
-            margin-top: 4rem;
-            text-align: center;
+            margin-top: 2.5rem;
         }
 
         .knopf {
@@ -153,9 +157,222 @@
         }
 
         .fakten {
-            margin-top: 1rem;
+            margin-top: 0.75rem;
             color: var(--muted);
             font-size: 0.9375rem;
+        }
+
+        .hinweis {
+            margin-top: 0.75rem;
+            color: var(--muted);
+            font-size: 0.9375rem;
+            max-width: 34rem;
+        }
+
+        /* Bewegtbild */
+        .film {
+            margin-top: 3.5rem;
+        }
+
+        .film video,
+        .film img {
+            display: block;
+            width: 100%;
+            max-width: 30rem;
+            height: auto;
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        .nur-hell { display: block; }
+        .nur-dunkel { display: none; }
+
+        @media (prefers-color-scheme: dark) {
+            .nur-hell { display: none; }
+            .nur-dunkel { display: block; }
+        }
+
+        .standbild { display: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .film video { display: none; }
+            .standbild.nur-hell { display: block; }
+            @media (prefers-color-scheme: dark) {
+                .standbild.nur-hell { display: none; }
+                .standbild.nur-dunkel { display: block; }
+            }
+        }
+
+        /* Fließtext */
+        .beschreibung {
+            margin-top: 3.5rem;
+            font-size: 1.125rem;
+            max-width: 36rem;
+        }
+
+        .herkunft {
+            margin-top: 1.25rem;
+            color: var(--muted);
+            max-width: 36rem;
+        }
+
+        /* Blöcke */
+        .bloecke {
+            margin-top: 4.5rem;
+            display: grid;
+            gap: 4rem;
+        }
+
+        .block h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+        }
+
+        .block p {
+            margin-top: 0.5rem;
+            max-width: 34rem;
+            color: var(--muted);
+        }
+
+        .block .bild {
+            margin-top: 1.5rem;
+        }
+
+        .block .bild img,
+        .block .bild video {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .paar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-end;
+            gap: 1.5rem;
+        }
+
+        .paar figure {
+            flex: 0 1 auto;
+        }
+
+        .paar figcaption {
+            margin-top: 0.5rem;
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        .paar img {
+            max-height: 15rem;
+            width: auto;
+        }
+
+        /* Abschnitt mit Überschrift */
+        .abschnitt {
+            margin-top: 4.5rem;
+        }
+
+        .abschnitt h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .abschnitt p {
+            margin-top: 0.5rem;
+            max-width: 36rem;
+        }
+
+        .abschnitt .zweitrangig {
+            color: var(--muted);
+        }
+
+        /* Update-Liste */
+        form {
+            margin-top: 1.25rem;
+            max-width: 30rem;
+        }
+
+        .feldzeile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        input[type="email"] {
+            flex: 1 1 14rem;
+            font: inherit;
+            font-size: 1rem;
+            color: var(--text);
+            background: transparent;
+            border: 1px solid var(--rahmen);
+            border-radius: 8px;
+            padding: 0.75rem 0.875rem;
+        }
+
+        input[type="email"]:focus-visible {
+            outline: 2px solid var(--akzent);
+            outline-offset: 1px;
+            border-color: transparent;
+        }
+
+        button[type="submit"] {
+            font: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--auf-akzent);
+            background: var(--akzent);
+            border: 0;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            transition: background 150ms;
+        }
+
+        button[type="submit"]:hover,
+        button[type="submit"]:focus-visible {
+            background: var(--akzent-hover);
+        }
+
+        .einwilligung {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.625rem;
+            align-items: flex-start;
+        }
+
+        .einwilligung input {
+            margin-top: 0.45rem;
+            flex-shrink: 0;
+            accent-color: var(--akzent);
+        }
+
+        .kleingedruckt {
+            margin-top: 0.75rem;
+            color: var(--muted);
+            font-size: 0.875rem;
+        }
+
+        .honigtopf {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+            height: 0;
+            width: 0;
+        }
+
+        /* Autor */
+        .profil {
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--muted);
+        }
+
+        .profil svg {
+            flex-shrink: 0;
         }
 
         /* Fußzeile */
@@ -165,21 +382,33 @@
             border-top: 1px solid var(--rahmen);
             color: var(--muted);
             font-size: 0.9375rem;
+        }
+
+        .fusslinks {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem 1.5rem;
+        }
+
+        .marke {
+            margin-top: 1.25rem;
+            font-size: 0.875rem;
+            max-width: 34rem;
         }
 
         a {
             color: inherit;
         }
 
-        footer a {
+        footer a,
+        .kleingedruckt a,
+        .profil {
             text-decoration-color: var(--rahmen);
             text-underline-offset: 0.2em;
         }
 
-        footer a:hover {
+        footer a:hover,
+        .profil:hover {
             color: var(--text);
         }
 
@@ -201,8 +430,8 @@
                 font-size: 1.5rem;
             }
 
-            .beschreibung {
-                font-size: 1.0625rem;
+            .paar img {
+                max-height: 11rem;
             }
         }
     </style>
@@ -215,36 +444,178 @@
         <img src="icon.svg" alt="" width="72" height="72">
         <div>
             <h1>LifeStrings Timer</h1>
-            <p class="einzeiler">Ein Fokus-Timer, der sichtbar bleibt.</p>
+            <p class="einzeiler">Der Fokus-Timer, der immer im Blick bleibt.</p>
         </div>
     </header>
 
+    <div class="download">
+        <a class="knopf" href="https://github.com/Thomas-R-Jaeger/LifeStrings-Timer-Release/releases/download/v2.0/LifeStrings-Timer-2.0.zip">Für macOS laden</a>
+        <p class="fakten">Version 2.0 · 0,6 MB · ab macOS 14 · kostenlos · von Apple notarisiert</p>
+        <p class="hinweis">Nach dem Laden die App in den Ordner „Programme“ ziehen. Beim ersten Start kommt der Hinweis, dass es sich um eine aus dem Internet geladene Datei handelt – einmal bestätigen.</p>
+    </div>
+
+    <div class="film">
+        <video class="nur-hell" autoplay muted loop playsinline preload="none"
+               poster="aufnahmen-v2/bewegtbild-hell-poster.png"
+               aria-label="Das Mini-Fenster des Timers schwebt über einer Webseite, während darin weitergescrollt wird; die Anzeige wechselt von der ablaufenden Scheibe zu den Ziffern.">
+            <source src="aufnahmen-v2/bewegtbild-hell.webm" type="video/webm">
+            <source src="aufnahmen-v2/bewegtbild-hell.mp4" type="video/mp4">
+        </video>
+        <video class="nur-dunkel" autoplay muted loop playsinline preload="none"
+               poster="aufnahmen-v2/bewegtbild-dunkel-poster.png"
+               aria-label="Das Mini-Fenster des Timers schwebt über einer Webseite, während darin weitergescrollt wird; die Scheibe zeigt die verbleibende Fokuszeit.">
+            <source src="aufnahmen-v2/bewegtbild-dunkel.webm" type="video/webm">
+            <source src="aufnahmen-v2/bewegtbild-dunkel.mp4" type="video/mp4">
+        </video>
+        <img class="standbild nur-hell" src="aufnahmen-v2/bewegtbild-hell-poster.png"
+             alt="Das Mini-Fenster des Timers schwebt über einer Webseite und zeigt die ablaufende Scheibe.">
+        <img class="standbild nur-dunkel" src="aufnahmen-v2/bewegtbild-dunkel-poster.png"
+             alt="Das Mini-Fenster des Timers schwebt über einer Webseite und zeigt die ablaufende Scheibe.">
+    </div>
+
     <p class="beschreibung">
-        Der LifeStrings Timer arbeitet im Pomodoro-Rhythmus: Fokus, kurze Pause,
-        lange Pause. Die verbleibende Zeit zeigt er wahlweise als Ziffern oder als
-        ablaufende Scheibe. Ein Mini-Fenster schwebt über allen anderen Fenstern,
-        damit die Zeit im Blick bleibt. Keine Konten, keine Cloud, keine Statistik
-        – ein Timer, sonst nichts.
+        Der LifeStrings Timer ist eine schlichte App für den Mac, die dabei unterstützt, im
+        Pomodoro-Rhythmus zu arbeiten: Fokuszeit, kurze Pause, lange Pause nach der vierten
+        Runde. Er schwebt über allen Fenstern – so bleibt die Fokuszeit bewusst im Blick.
+        Die Zeiten und Intervalle lassen sich konfigurieren und so an die eigene
+        Arbeitsweise anpassen.
     </p>
 
-    <div class="schau">
-        <picture>
-            <source srcset="screenshot-hell.png" media="(prefers-color-scheme: light)">
-            <img src="screenshot-dunkel.png" width="842" height="724"
-                 alt="Der LifeStrings Timer in der Scheibenansicht: eine ablaufende Scheibe zeigt die verbleibende Fokuszeit der laufenden Fokusphase.">
-        </picture>
+    <p class="herkunft">
+        Er ist das kleinste Werkzeug aus LifeStrings und schützt den Jetzt-Fokus: die Zeit,
+        in der man sich ganz auf das konzentriert, was gerade dran ist.
+    </p>
+
+    <div class="bloecke">
+
+        <section class="block">
+            <h2>Groß zum Einstellen, klein zum Danebenstellen</h2>
+            <p>Klein genug, um den ganzen Tag neben der Arbeit zu stehen.</p>
+            <div class="bild paar">
+                <figure>
+                    <picture>
+                        <source srcset="aufnahmen-v2/block1-gross-dunkel.png" media="(prefers-color-scheme: dark)">
+                        <img src="aufnahmen-v2/block1-gross-hell.png" alt="Das große Fenster des Timers mit ablaufender Scheibe, Zykluspunkten und der Knopfleiste am unteren Rand.">
+                    </picture>
+                    <figcaption>Volle Anzeige</figcaption>
+                </figure>
+                <figure>
+                    <picture>
+                        <source srcset="aufnahmen-v2/block1-klein-dunkel.png" media="(prefers-color-scheme: dark)">
+                        <img src="aufnahmen-v2/block1-klein-hell.png" alt="Dasselbe Fenster verkleinert: nur die Scheibe, die Knöpfe erscheinen, wenn der Zeiger darüberfährt.">
+                    </picture>
+                    <figcaption>Mini-Modus</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Immer im Vordergrund, nie im Weg</h2>
+            <p>Ein Klick auf den Pin, und der Timer bleibt im Vordergrund – auch wenn ein anderes Programm den ganzen Bildschirm füllt.</p>
+            <div class="bild">
+                <picture>
+                    <source srcset="aufnahmen-v2/block2-ontop-dunkel.png" media="(prefers-color-scheme: dark)">
+                    <img src="aufnahmen-v2/block2-ontop-hell.png" alt="Das kleine Fenster des Timers liegt über einem geöffneten Browserfenster und verdeckt nur eine Ecke davon.">
+                </picture>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Ziffern oder Scheibe, per Klick</h2>
+            <p>Ein Klick auf die Anzeige wechselt zwischen beiden – Ziffern oder Scheibe, je nach Vorliebe.</p>
+            <div class="bild paar">
+                <figure>
+                    <picture>
+                        <source srcset="aufnahmen-v2/block3-ziffern-dunkel.png" media="(prefers-color-scheme: dark)">
+                        <img src="aufnahmen-v2/block3-ziffern-hell.png" alt="Der Timer zeigt die Restzeit als große Ziffern: 30 Minuten, 0 Sekunden.">
+                    </picture>
+                    <figcaption>Ziffern</figcaption>
+                </figure>
+                <figure>
+                    <picture>
+                        <source srcset="aufnahmen-v2/block3-scheibe-dunkel.png" media="(prefers-color-scheme: dark)">
+                        <img src="aufnahmen-v2/block3-scheibe-hell.png" alt="Derselbe Stand als Scheibe: eine gefüllte Fläche auf einem Zifferblatt, das bis 60 Minuten reicht.">
+                    </picture>
+                    <figcaption>Scheibe</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="block">
+            <h2>Aktuelle Phase anpassen</h2>
+            <p>Mehr oder weniger Zeit, direkt in der Anzeige verstellbar.</p>
+            <div class="bild">
+                <video class="nur-hell" autoplay muted loop playsinline preload="none"
+                       poster="aufnahmen-v2/block4-drehgeste-hell-poster.png"
+                       aria-label="Der Zeiger fasst die Scheibe an und dreht sie weiter; die gefüllte Fläche wächst dabei um einige Minuten.">
+                    <source src="aufnahmen-v2/block4-drehgeste-hell.webm" type="video/webm">
+                    <source src="aufnahmen-v2/block4-drehgeste-hell.mp4" type="video/mp4">
+                </video>
+                <video class="nur-dunkel" autoplay muted loop playsinline preload="none"
+                       poster="aufnahmen-v2/block4-drehgeste-dunkel-poster.png"
+                       aria-label="Der Zeiger fasst die Scheibe an und dreht sie weiter; die gefüllte Fläche wächst dabei um einige Minuten.">
+                    <source src="aufnahmen-v2/block4-drehgeste-dunkel.webm" type="video/webm">
+                    <source src="aufnahmen-v2/block4-drehgeste-dunkel.mp4" type="video/mp4">
+                </video>
+                <img class="standbild nur-hell" src="aufnahmen-v2/block4-drehgeste-hell-poster.png"
+                     alt="Der Zeiger liegt auf der Scheibe des Timers, um die Restzeit durch Drehen zu verstellen.">
+                <img class="standbild nur-dunkel" src="aufnahmen-v2/block4-drehgeste-dunkel-poster.png"
+                     alt="Der Zeiger liegt auf der Scheibe des Timers, um die Restzeit durch Drehen zu verstellen.">
+            </div>
+        </section>
+
     </div>
+
+    <section class="abschnitt">
+        <h2>Was er bewusst nicht tut</h2>
+        <p>Kein Konto nötig, keine Cloud-Anbindung, keine Projektverwaltung, keine Auswertung. Der Timer zählt die Zeit und sonst nichts. Auch er fokussiert sich auf eine Sache.</p>
+    </section>
 
     <div class="download">
         <a class="knopf" href="https://github.com/Thomas-R-Jaeger/LifeStrings-Timer-Release/releases/download/v2.0/LifeStrings-Timer-2.0.zip">Für macOS laden</a>
         <p class="fakten">Version 2.0 · 0,6 MB · ab macOS 14 · kostenlos · von Apple notarisiert</p>
     </div>
 
+    <section class="abschnitt">
+        <h2>Update-Liste</h2>
+        <form action="https://94dce147.sibforms.com/serve/MUIFAP4RQbPs3b9rUe8-Fxh1RID5_AdgDSeFc5ZeBvLRav7Iq3BS-fY3UZ4rvZwUdHjqtL0cno2T2js-7a7f5_WmU8pyhbHX-kLPfz0kbK8Q955nUS2MCKoTD_iry8GQkTITvoBwy8i-vMxC3E-5zSB53TBBK_Y0PPCJVSj57gyhnfpvm8uyotPMld0FC_SCi__UmaRqgRbe38nbOg==" method="POST">
+            <div class="feldzeile">
+                <label class="honigtopf" for="email_address_check">Dieses Feld bitte leer lassen</label>
+                <input class="honigtopf" type="text" id="email_address_check" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <input type="hidden" name="locale" value="de">
+                <label class="honigtopf" for="EMAIL">E-Mail-Adresse</label>
+                <input type="email" id="EMAIL" name="EMAIL" required autocomplete="email" placeholder="E-Mail-Adresse">
+                <button type="submit">Eintragen</button>
+            </div>
+            <p class="einwilligung">
+                <input type="checkbox" id="opt_in" name="OPT_IN" value="1" required>
+                <label for="opt_in">Ich möchte Bescheid wissen, wenn es eine neue Version gibt.</label>
+            </p>
+            <p class="kleingedruckt">Die Einwilligung lässt sich jederzeit widerrufen. Wie die Adresse verarbeitet wird, steht in der <a href="/datenschutz/">Datenschutzerklärung</a>.</p>
+        </form>
+    </section>
+
+    <section class="abschnitt">
+        <h2>Wer das gebaut hat</h2>
+        <p>Gebaut hat den Timer Thomas Jäger, <a href="/">naturalconsult</a>. Entstanden ist er für den eigenen Gebrauch, im Rahmen von LifeStrings.</p>
+        <a class="profil" href="https://www.linkedin.com/in/thomasjaeger/">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M6.5 3.5H3.5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-3"></path>
+                <path d="M9.5 2.5h4v4"></path>
+                <path d="M13.5 2.5 7 9"></path>
+            </svg>
+            Thomas Jäger auf LinkedIn
+        </a>
+    </section>
+
     <footer>
-        <a href="/">naturalconsult.de</a>
-        <a href="/impressum/">Impressum</a>
-        <a href="/datenschutz/">Datenschutz</a>
-        <a href="mailto:thomas.jaeger@naturalconsult.de">thomas.jaeger@naturalconsult.de</a>
+        <div class="fusslinks">
+            <a href="/">naturalconsult.de</a>
+            <a href="/impressum/">Impressum</a>
+            <a href="/datenschutz/">Datenschutz</a>
+            <a href="mailto:thomas.jaeger@naturalconsult.de">thomas.jaeger@naturalconsult.de</a>
+        </div>
+        <p class="marke">Pomodoro Technique ist eine Marke von Francesco Cirillo. LifeStrings Timer steht in keiner Verbindung zu ihm.</p>
     </footer>
 
 </div>
