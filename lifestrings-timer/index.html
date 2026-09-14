@@ -176,7 +176,6 @@
 
         .film video,
         .film img {
-            display: block;
             width: 100%;
             max-width: 30rem;
             height: auto;
@@ -184,6 +183,9 @@
             border-radius: 10px;
         }
 
+        /* Hell- und Dunkelfassung: es ist immer genau eine sichtbar.
+           Die Modus-Klassen stehen allein fuer die Sichtbarkeit; die Regeln
+           darueber setzen bewusst kein display, sonst schlagen sie diese hier. */
         .nur-hell { display: block; }
         .nur-dunkel { display: none; }
 
@@ -192,15 +194,22 @@
             .nur-dunkel { display: block; }
         }
 
-        .standbild { display: none; }
+        /* Standbilder springen nur ein, wenn Bewegung unerwuenscht ist. */
+        .standbild.nur-hell,
+        .standbild.nur-dunkel { display: none; }
 
         @media (prefers-reduced-motion: reduce) {
-            .film video { display: none; }
+            .film video.nur-hell,
+            .film video.nur-dunkel,
+            .bild video.nur-hell,
+            .bild video.nur-dunkel { display: none; }
+
             .standbild.nur-hell { display: block; }
-            @media (prefers-color-scheme: dark) {
-                .standbild.nur-hell { display: none; }
-                .standbild.nur-dunkel { display: block; }
-            }
+        }
+
+        @media (prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) {
+            .standbild.nur-hell { display: none; }
+            .standbild.nur-dunkel { display: block; }
         }
 
         /* Fließtext */
@@ -241,11 +250,13 @@
 
         .block .bild img,
         .block .bild video {
-            display: block;
             max-width: 100%;
             height: auto;
             border-radius: 10px;
         }
+
+        .block .bild > picture > img,
+        .paar img { display: block; }
 
         .paar {
             display: flex;
@@ -268,6 +279,11 @@
             max-height: 15rem;
             width: auto;
         }
+
+        /* Block 1 lebt vom Groessenunterschied: die beiden Fenster werden
+           im Verhaeltnis ihrer echten Kantenlaengen gezeigt, nicht gleich gross. */
+        .massstab .gross img { max-height: none; height: 15rem; }
+        .massstab .klein img { max-height: none; height: 7.8rem; }
 
         /* Abschnitt mit Überschrift */
         .abschnitt {
@@ -433,6 +449,9 @@
             .paar img {
                 max-height: 11rem;
             }
+
+            .massstab .gross img { height: 11rem; }
+            .massstab .klein img { height: 5.7rem; }
         }
     </style>
 </head>
@@ -451,7 +470,6 @@
     <div class="download">
         <a class="knopf" href="https://github.com/Thomas-R-Jaeger/LifeStrings-Timer-Release/releases/download/v2.0/LifeStrings-Timer-2.0.zip">Für macOS laden</a>
         <p class="fakten">Version 2.0 · 0,6 MB · ab macOS 14 · kostenlos · von Apple notarisiert</p>
-        <p class="hinweis">Nach dem Laden die App in den Ordner „Programme“ ziehen. Beim ersten Start kommt der Hinweis, dass es sich um eine aus dem Internet geladene Datei handelt – einmal bestätigen.</p>
     </div>
 
     <div class="film">
@@ -491,15 +509,15 @@
         <section class="block">
             <h2>Groß zum Einstellen, klein zum Danebenstellen</h2>
             <p>Klein genug, um den ganzen Tag neben der Arbeit zu stehen.</p>
-            <div class="bild paar">
-                <figure>
+            <div class="bild paar massstab">
+                <figure class="gross">
                     <picture>
                         <source srcset="aufnahmen-v2/block1-gross-dunkel.png" media="(prefers-color-scheme: dark)">
                         <img src="aufnahmen-v2/block1-gross-hell.png" alt="Das große Fenster des Timers mit ablaufender Scheibe, Zykluspunkten und der Knopfleiste am unteren Rand.">
                     </picture>
                     <figcaption>Volle Anzeige</figcaption>
                 </figure>
-                <figure>
+                <figure class="klein">
                     <picture>
                         <source srcset="aufnahmen-v2/block1-klein-dunkel.png" media="(prefers-color-scheme: dark)">
                         <img src="aufnahmen-v2/block1-klein-hell.png" alt="Dasselbe Fenster verkleinert: nur die Scheibe, die Knöpfe erscheinen, wenn der Zeiger darüberfährt.">
@@ -574,6 +592,7 @@
     <div class="download">
         <a class="knopf" href="https://github.com/Thomas-R-Jaeger/LifeStrings-Timer-Release/releases/download/v2.0/LifeStrings-Timer-2.0.zip">Für macOS laden</a>
         <p class="fakten">Version 2.0 · 0,6 MB · ab macOS 14 · kostenlos · von Apple notarisiert</p>
+        <p class="hinweis">Nach dem Laden die App in den Ordner „Programme“ ziehen. Beim ersten Start kommt der Hinweis, dass es sich um eine aus dem Internet geladene Datei handelt – einmal bestätigen.</p>
     </div>
 
     <section class="abschnitt">
